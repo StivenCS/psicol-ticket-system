@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Laravel
+backend/storage/*.key
+backend/.env
+backend/vendor/
+backend/storage/logs/
+backend/storage/framework/
+
+# Vue
+frontend/node_modules/
+frontend/dist/
+
+# Docker
+mysql_data/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
