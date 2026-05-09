@@ -40,7 +40,7 @@
           <template #append>
             <q-icon name="event" class="cursor-pointer" style="color:#96B4B2">
               <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                <q-date v-model="form.due_date" mask="YYYY-MM-DD">
+                <q-date v-model="form.due_date" mask="YYYY-MM-DD" :options="(d) => d >= today">
                   <div class="row items-center justify-end"><q-btn v-close-popup label="OK" color="primary" flat /></div>
                 </q-date>
               </q-popup-proxy>
@@ -73,6 +73,7 @@ const $q     = useQuasar();
 const store  = useTicketStore();
 
 const isEdit  = computed(() => !!route.params.id);
+const today   = new Date().toISOString().slice(0, 10).replace(/-/g, '/');
 const loading = ref(false);
 const users   = ref<User[]>([]);
 
