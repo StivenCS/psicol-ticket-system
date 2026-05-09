@@ -44,7 +44,6 @@ psicol-ticket-system/
 docker compose up --build
 
 # En otra terminal — primera vez
-docker compose exec app php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="permission-migrations"
 docker compose exec app php artisan migrate
 docker compose exec app php artisan db:seed
 ```
