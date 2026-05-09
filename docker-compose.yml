@@ -5,6 +5,8 @@ services:
       dockerfile: docker/php/Dockerfile
     container_name: psicol_ticket_app
     working_dir: /var/www
+    environment:
+      COMPOSER_PROCESS_TIMEOUT: 0
     volumes:
       - ./backend:/var/www
       - ./docker/php/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
