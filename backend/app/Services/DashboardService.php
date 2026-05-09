@@ -3,12 +3,19 @@
 namespace App\Services;
 
 use App\Models\Ticket;
+use App\Models\User;
 
 class DashboardService
 {
-    public function getStats(): array
+    public function getStats(?User $user = null): array
     {
-        $row = Ticket::selectRaw("
+        $query = Ticket::query();
+
+        if ($user?->hasRole('cliente')) {
+            $query->where('creator_id', $user->id);
+        }
+
+        $row = $query->selectRaw("
             COUNT(*) as total,
             SUM(CASE WHEN status = 'open' THEN 1 ELSE 0 END) as open_count,
             SUM(CASE WHEN status = 'in_progress' THEN 1 ELSE 0 END) as in_progress_count,

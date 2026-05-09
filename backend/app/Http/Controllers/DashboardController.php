@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\DashboardService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -11,6 +12,6 @@ class DashboardController extends Controller
 
     public function stats(): JsonResponse
     {
-        return response()->json($this->dashboardService->getStats());
+        return response()->json($this->dashboardService->getStats(Auth::guard('api')->user()));
     }
 }
