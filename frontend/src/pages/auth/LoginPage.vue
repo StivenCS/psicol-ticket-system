@@ -2,7 +2,7 @@
   <q-page class="login-root">
     <div class="login-shell">
       <div class="login-brand">
-        <span class="login-brand-dot" />
+        
         <span class="login-brand-name">PsiCol</span>
       </div>
       <p class="login-subtitle">Sistema de gestión de incidentes</p>

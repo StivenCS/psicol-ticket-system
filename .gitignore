@@ -19,8 +19,6 @@ mysql_data/
 # IDE
 .vscode/
 .idea/
-skills-lock.json
-.interface-design/system.md
 
 # OS
 .DS_Store
