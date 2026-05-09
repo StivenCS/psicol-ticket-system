@@ -1,1 +1,128 @@
-// app global css
+// PsiCol — tokens y utilidades globales (paleta psicol.co)
+
+:root {
+  // Texto
+  --t1: #1C3035;
+  --t2: #2D4A47;
+  --t3: #5D7E7B;
+  --t4: #96B4B2;
+
+  // Superficies (mismo hue teal, solo lightness)
+  --sf0: #F9FFFE;
+  --sf1: #EFF8F7;
+  --sf2: #E5F4F2;
+
+  // Separadores
+  --sep:   rgba(42, 157, 143, 0.09);
+  --sep-s: rgba(42, 157, 143, 0.16);
+
+  // Brand
+  --brand:    #2A9D8F;
+  --brand-dim:#207F73;
+  --brand-bg: #EBF7F5;
+
+  // Status
+  --s-open:    #3B82F6;
+  --s-open-bg: #EFF6FF;
+  --s-prog:    #F4A261;
+  --s-prog-bg: #FEF3E2;
+  --s-res:     #2A9D8F;
+  --s-res-bg:  #EBF7F5;
+  --s-clo:     #96B4B2;
+  --s-clo-bg:  #F0F7F6;
+
+  // Priority
+  --p-low:     #2A9D8F;
+  --p-low-bg:  #EBF7F5;
+  --p-med:     #F4A261;
+  --p-med-bg:  #FEF3E2;
+  --p-hi:      #E63946;
+  --p-hi-bg:   #FDEBEC;
+  --p-crit:    #7C4DBE;
+  --p-crit-bg: #F0EBFC;
+}
+
+body {
+  background: var(--sf0);
+  color: var(--t2);
+}
+
+// --- Status chip: dot indica estado vivo ---
+.s-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.5;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &.open        { color: var(--s-open); background: var(--s-open-bg); &::before { background: var(--s-open); } }
+  &.in_progress { color: var(--s-prog); background: var(--s-prog-bg); &::before { background: var(--s-prog); } }
+  &.resolved    { color: var(--s-res);  background: var(--s-res-bg);  &::before { background: var(--s-res); } }
+  &.closed      { color: var(--s-clo);  background: var(--s-clo-bg);  &::before { background: var(--s-clo); } }
+}
+
+// --- Priority chip: border-left señala severidad ---
+.p-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.5;
+
+  &.low      { color: var(--p-low);  background: var(--p-low-bg);  border-left: 2px solid var(--p-low); }
+  &.medium   { color: var(--p-med);  background: var(--p-med-bg);  border-left: 2px solid var(--p-med); }
+  &.high     { color: var(--p-hi);   background: var(--p-hi-bg);   border-left: 2px solid var(--p-hi); }
+  &.critical { color: var(--p-crit); background: var(--p-crit-bg); border-left: 2px solid var(--p-crit); }
+}
+
+// --- Page shell ---
+.psicol-page { background: var(--sf0); min-height: 100vh; }
+
+.page-header { margin-bottom: 16px; }
+
+.page-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--t1);
+  letter-spacing: -0.01em;
+  margin: 0 0 2px;
+}
+
+.page-sub {
+  font-size: 12px;
+  color: var(--t4);
+  margin: 0;
+}
+
+// --- Skeleton shimmer ---
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton-row {
+  background: linear-gradient(90deg, var(--sf1) 25%, var(--sf2) 50%, var(--sf1) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 4px;
+}
